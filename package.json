@@ -9,10 +9,11 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "",
+    "start": "cross-env NODE_ENV=production node --require @babel/register server/database/db CreateTables && npm run defaultsproduction && cross-env NODE_ENV=production babel-node server/server.js",
     "dev": "cross-env NODE_ENV=development node --require @babel/register server/database/db Createtables  && npm run defaults && nodemon --exec babel-node --presets @babel/preset-env server/server.js",
     "drop": "cross-env NODE_ENV=development node --require @babel/register server/database/db Droptables",
-    "defaults": "cross-env NODE_ENV=development node --require @babel/register server/database/db DefaultImages"
+    "defaults": "cross-env NODE_ENV=development node --require @babel/register server/database/db DefaultImages",
+    "defaultsproduction": "cross-env NODE_ENV=development node --require @babel/register server/database/db DefaultImages"
   },
   "repository": {
     "type": "git",
