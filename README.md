@@ -2,6 +2,14 @@
 
 a JavaScript api that allows you to search for images
 
+[![Build Status](https://travis-ci.org/nshutijonathan/Build-an-Image-Search-Abstraction-Layer-BE.svg?branch=develop)](https://travis-ci.org/nshutijonathan/Build-an-Image-Search-Abstraction-Layer-BE)
+
+[![Coverage Status](https://coveralls.io/repos/github/nshutijonathan/Build-an-Image-Search-Abstraction-Layer-BE/badge.svg?branch=develop)](https://coveralls.io/github/nshutijonathan/Build-an-Image-Search-Abstraction-Layer-BE?branch=develop)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/abf4588e8fae7f1814ec/maintainability)](https://codeclimate.com/github/nshutijonathan/Build-an-Image-Search-Abstraction-Layer-BE/maintainability)
+
+[Heroku-link](https://image-obst-layer.herokuapp.com/)
+
 ### clone the Application
 
 [Github](https://github.com/nshutijonathan/Build-an-Image-Search-Abstraction-Layer-BE)
