@@ -40,6 +40,12 @@ const Images = {
         data: rows,
       });
     } catch (error) {
+      if (error.routine === '_bt_check_unique') {
+        return res.status(409).send({
+          status: 409,
+          message: 'url already exists already exists',
+        });
+      }
       return res.send({
         error: error.message,
       });
