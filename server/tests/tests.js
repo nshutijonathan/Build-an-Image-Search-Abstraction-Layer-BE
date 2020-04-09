@@ -48,7 +48,7 @@ describe('get welcome message', () => {
       .request(app)
       .post('/api/v1/images/add')
       .send({
-        url: 'https://loremflickrs.com/320/240',
+        url: 'https://i.picsum.photos/id/936/200/300.jpg',
         snippet: 'facebook',
         context: 'Learn to drive',
         photographer: 'Amni',
