@@ -9,7 +9,7 @@ export const Createtables = () => {
     id SERIAL PRIMARY KEY,
     url VARCHAR(200) UNIQUE NOT NULL,
     snippet VARCHAR(10),
-    context VARCHAR(20),
+    context VARCHAR(200),
     photographer VARCHAR(20),
     createdOn TIMESTAMP NOT NULL  DEFAULT NOW()
   )
@@ -49,9 +49,9 @@ export const DefaultImages = () => {
 ) ON CONFLICT DO NOTHING returning *`;
   const image2 = `INSERT INTO images(url,snippet,context,photographer) VALUES('https://i.picsum.photos/id/629/200/200.jpg','youtube','Learn to code','Steve Jobs'
 ) ON CONFLICT DO NOTHING returning *`;
-  const image3 = `INSERT INTO images(url,snippet,context,photographer) VALUES('https://i.picsum.photos/id/629/200/200.jpg','youtube','Learn to code','Steve Jobs'
+  const image3 = `INSERT INTO images(url,snippet,context,photographer) VALUES('https://media.inquirer.com/storage/inquirer/projects/year-in-pictures-2019/photos/POY2019_RedC.JPG','youtube','Learn to code','Steve Jobs'
 ) ON CONFLICT DO NOTHING returning *`;
-  const Queries = `${image1};${image2};${image3};${image4}`;
+  const Queries = `${image1};${image2};${image3}`;
   pool
     .query(Queries)
     .then((res) => {
