@@ -4,6 +4,7 @@ const Images = {
   async AllImages(req, res) {
     const offset = req.query.offset;
     const limit = req.query.limit;
+    console.log(limit);
     try {
       const ImagesQuery = `SELECT * FROM images  OFFSET $1 LIMIT $2 `;
       const { rows } = await pool.query(ImagesQuery, [offset, limit]);
@@ -54,6 +55,27 @@ const Images = {
       return res.status(200).send({
         status: 200,
         message: `Image with id ${req.params.id} is retrived successfully`,
+        data: rows,
+      });
+    } catch (error) {
+      return res.send({
+        error: error.message,
+      });
+    }
+  },
+  async searchImages(req, res) {
+    const text = req.query.text;
+    const offset = req.query.offset;
+    const limit = req.query.limit;
+    const searchQuery =
+      'SELECT * FROM images WHERE id || url || snippet || context|| photographer LIKE $1  OFFSET $2 LIMIT $3 ';
+    try {
+      const { rows } = await pool.query(searchQuery, [
+        `%${text}%`,
+        offset,
+        limit,
+      ]);
+      return res.status(200).send({
         data: rows,
       });
     } catch (error) {
