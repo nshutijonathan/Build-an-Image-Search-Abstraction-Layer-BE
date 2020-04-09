@@ -1,3 +1,4 @@
+import '@babel/polyfill/noConflict';
 import express from 'express';
 import router from './routes/routes';
 import dotenv from 'dotenv';
