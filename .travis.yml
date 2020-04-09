@@ -1,13 +1,13 @@
 language: node_js
 
 node_js:
-  - "stable"
+  - 'stable'
 
 services:
   - postgresql
 
 before_install:
-  - psql -c 'create database abstraction-layer-testing' -U postgres
+  - psql -c 'create database abstraction_layer_testing' -U postgres
 
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
@@ -16,9 +16,9 @@ before_script:
 
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-  
+
 script:
-  - npm install 
+  - npm install
   - npm run test
 
 after_success:
@@ -26,4 +26,4 @@ after_success:
 
 cache:
   directories:
-    - "node_modules"
+    - 'node_modules'
