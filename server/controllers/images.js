@@ -1,5 +1,9 @@
 import pool from '../database/connect';
 import _ from 'lodash';
+import NodeCache from 'node-cache';
+const mycache = new NodeCache();
+let gottenRecentSearchString = [];
+
 const Images = {
   async AllImages(req, res) {
     const offset = req.query.offset;
@@ -75,6 +79,10 @@ const Images = {
         offset,
         limit,
       ]);
+      let time = new Date();
+      let RecentSearchStrings = gottenRecentSearchString;
+      RecentSearchStrings.push({ term: text, when: time });
+      gottenRecentSearchString = [...RecentSearchStrings];
       return res.status(200).send({
         data: rows,
       });
@@ -83,6 +91,13 @@ const Images = {
         error: error.message,
       });
     }
+  },
+  async recentSearchString(req, res) {
+    return res.status(200).send({
+      status: 200,
+      message: 'All recent search strings successfully retrieved',
+      gottenRecentSearchString,
+    });
   },
 };
 export default Images;
