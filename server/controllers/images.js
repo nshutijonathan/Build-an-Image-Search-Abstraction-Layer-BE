@@ -2,9 +2,12 @@ import pool from '../database/connect';
 import _ from 'lodash';
 const Images = {
   async AllImages(req, res) {
+    const offset = req.query.offset;
+    const limit = req.query.limit;
     try {
-      const ImagesQuery = 'SELECT * FROM images';
-      const { rows } = await pool.query(ImagesQuery);
+      const ImagesQuery = `SELECT * FROM images  OFFSET $1 LIMIT $2 `;
+      const { rows } = await pool.query(ImagesQuery, [offset, limit]);
+
       return res.status(200).send({
         status: 200,
         message: 'All images successfully retrieved',
